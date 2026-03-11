@@ -311,6 +311,101 @@
             color: var(--accent);
         }
 
+                /* Раздел "Как поступить" */
+        .how-to {
+            padding: 5rem 0;
+            background-color: var(--white);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step-card {
+            background-color: var(--bg-light);
+            border-radius: 1.5rem;
+            padding: 2rem 1.5rem;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            border-color: var(--accent);
+        }
+
+        .step-number {
+            width: 3rem;
+            height: 3rem;
+            background-color: var(--accent);
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .step-card p {
+            color: var(--text-muted);
+        }
+
+        /* Раздел FAQ */
+        .faq {
+            padding: 5rem 0;
+            background-color: var(--bg-light);
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .faq-item {
+            background-color: var(--white);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            transition: 0.2s;
+        }
+
+        .faq-item:hover {
+            border-color: var(--accent);
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .faq-question i {
+            color: var(--accent);
+            font-size: 1.3rem;
+        }
+
+        .faq-answer {
+            color: var(--text-muted);
+            padding-left: 2rem;
+        }
         /* Призыв к действию */
         .cta {
             padding: 5rem 0;
@@ -602,4 +697,5 @@
         </div>
     </footer>
 </body>
+
 </html>
