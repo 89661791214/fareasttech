@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FET Incubator — Программа</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* --- Стили полностью скопированы из index.html --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #ebebeb;
+            color: #1e293b;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #616161;
+            --primary-light: #7e7e7e;
+            --accent: #1CB596;
+            --accent-light: #4dd0b0;
+            --bg-light: #f8fafc;
+            --text-dark: #0f172a;
+            --text-muted: #475569;
+            --white: #ebebeb;
+            --border: #e2e8f0;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+        h2 { font-size: 2.5rem; margin-bottom: 2rem; text-align: center; }
+
+        .section-subhead {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 6px rgba(97,97,97,0.1);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 12px rgba(97,97,97,0.2);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Шапка */
+        header {
+            background-color: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+            background-color: rgba(255,255,255,0.9);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+            display: block;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .header-cta {
+            background-color: var(--accent);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+
+        .header-cta:hover {
+            background-color: var(--accent-light);
+        }
+
+        /* Секция программы (две колонки) */
+        .program {
+            padding: 5rem 0;
+            background-color: var(--white);
+        }
+
+        .program-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .program-card {
+            padding: 2rem;
+            border-radius: 1rem;
+        }
+
+        .program-card.dark {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .program-card.light {
+            background-color: transparent;
+            color: var(--text-dark);
+            border: 2px solid var(--primary);
+        }
+
+        .program-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid currentColor;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+
+        .program-card ul {
+            list-style: none;
+        }
+
+        .program-card li {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .program-card li i {
+            margin-top: 0.2rem;
+            color: var(--accent);
+        }
+
+        .program-card.dark li i {
+            color: var(--accent-light);
+        }
+
+        .program-card p {
+            margin-bottom: 1rem;
+        }
+
+        /* Футер */
+        footer {
+            background-color: #1e293b;
+            color: #cbd5e1;
+            padding: 3rem 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 2rem;
+        }
+
+        .footer-col p { margin: 1rem 0; }
+        .footer-col .logo img { height: 40px; width: auto; margin-bottom: 1rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 0.75rem; }
+        .footer-col a { color: #cbd5e1; text-decoration: none; transition: color 0.2s; }
+        .footer-col a:hover { color: var(--accent); }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .social-links a { font-size: 1.5rem; color: #cbd5e1; }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+            font-size: 0.875rem;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .header-container { flex-direction: column; gap: 1rem; }
+            nav ul { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+            .program-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка (ссылки ведут на главную страницу с якорями) -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html"><img src="logo_fet.svg" alt="FET"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html#about">О нас</a></li>
+                    <li><a href="program.html">Программа</a></li>
+                    <li><a href="index.html#partners">Партнёры</a></li>
+                    <li><a href="index.html#contact">Контакты</a></li>
+                </ul>
+            </nav>
+            <a href="https://forms.yandex.ru/u/69b05bdf068ff01506dbcd8b/" class="header-cta" target="_blank">Подать заявку</a>
+        </div>
+    </header>
+
+    <!-- Основной контент: программа -->
+    <section class="program">
+        <div class="container">
+            <h2>Наши образовательные программы</h2>
+            <div class="section-subhead">Два трека — столичный и дальневосточный. Выбирай свой путь в технологическом предпринимательстве.</div>
+            <div class="program-grid">
+                <!-- Москва: тёмно-серый фон, белый текст -->
+                <div class="program-card dark">
+                    <h3>Москва</h3>
+                    <p><strong>Технологическое ядро России</strong> — глубокая экспертиза, ведущие вузы и корпорации.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Лекции от инженеров Росатом, Ростех, Сбера</li>
+                        <li><i class="fas fa-check-circle"></i> Мастер-классы по промт-инжинирингу</li>
+                        <li><i class="fas fa-check-circle"></i> Экскурсии в компании партнеры</li>
+                        <li><i class="fas fa-check-circle"></i> Бизнес-трек от экспертов крупных бизнесов и Сколково</li>
+                        <li><i class="fas fa-check-circle"></i> Нетворкинг с лидерами рынка</li>
+                    </ul>
+                    <p style="margin-top: 1rem;"><strong>Формат:</strong> очные встречи на базе образовательных учреждений + онлайн.</p>
+                </div>
+                <!-- Владивосток: без фона, чёрный текст, обводка -->
+                <div class="program-card light">
+                    <h3>Владивосток</h3>
+                    <p><strong>Ворота в Азию</strong> — фокус на международное сотрудничество и рынки АТР.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Лекции от китайских инженеров </li>
+                        <li><i class="fas fa-check-circle"></i> Работа с реальными китайскими кейсами</li>
+                        <li><i class="fas fa-check-circle"></i> Курс по ведению бизнеса с Китаем и защите IP</li>
+                        <li><i class="fas fa-check-circle"></i> Культурная подготовка: технический английский + нюансы переговоров с Китаем</li>
+                        <li><i class="fas fa-check-circle"></i> Экономика и экономический анализ</li>
+                    </ul>
+                    <p style="margin-top: 1rem;"><strong>Формат:</strong> гибридный: очные сессии в кампусе ДВФУ + онлайн.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер (такой же, как на главной) -->
+    <footer id="contact">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <div class="logo">
+                    <a href="index.html"><img src="logo_fet.svg" alt="FET"></a>
+                </div>
+                <p>Международный бизнес-инкубатор для молодых инженеров и предпринимателей в сфере микроэлектроники и ИИ.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                    <a href="#"><i class="fab fa-weixin"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Навигация</h4>
+                <ul>
+                    <li><a href="index.html#about">О нас</a></li>
+                    <li><a href="program.html">Программа</a></li>
+                    <li><a href="index.html#partners">Партнёры</a></li>
+                    <li><a href="index.html#register">Регистрация</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Документы</h4>
+                <ul>
+                    <li><a href="#">Положение</a></li>
+                    <li><a href="#">Политика конфиденциальности</a></li>
+                    <li><a href="#">Пользовательское соглашение</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Контакты</h4>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> slipockin@gmail.com</li>
+                    <li><i class="fas fa-phone"></i> +7 (966) 179 12-14</li>
+                    <li><i class="fas fa-map-marker-alt"></i> г. Москва</li>
+                </ul>
+            </div>
+        </div>
+        <div class="container copyright">
+            © 2026 FET Incubator. Все права защищены.
+        </div>
+    </footer>
+</body>
+</html>
