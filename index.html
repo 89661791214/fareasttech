@@ -535,6 +535,83 @@
                 gap: 2rem;
             }
         }
+        /* Блок "Международная конференция" */
+.conference {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: white;
+}
+
+.conference-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.conference-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: white;
+    text-align: left;
+}
+
+.conference-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+.conference-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.conference-actions .btn-primary {
+    background-color: var(--accent);
+    color: var(--primary);
+    border: 2px solid var(--accent);
+}
+
+.conference-actions .btn-primary:hover {
+    background-color: transparent;
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+.support-text {
+    font-size: 1.1rem;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.conference-logo {
+    text-align: center;
+}
+
+.partner-logo-img {
+    max-width: 100%;
+    max-height: 150px;
+    width: auto;
+    height: auto;
+    filter: brightness(0) invert(1); /* если логотип тёмный, на тёмном фоне будет плохо видно. Эта строка делает его белым. Если логотип и так светлый, удалите эту строку. */
+}
+
+@media (max-width: 768px) {
+    .conference-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .conference-content h2 {
+        text-align: center;
+    }
+    .conference-actions {
+        justify-content: center;
+    }
+}
     </style>
 </head>
 <body>
@@ -732,7 +809,22 @@
             </div>
         </div>
     </section>
-    
+    <!-- Блок "Международная конференция" -->
+<section class="conference">
+    <div class="container conference-container">
+        <div class="conference-content">
+            <h2>Мы представляем Россию<br>на международной конференции</h2>
+            <p>FET Incubator стал участником программы X Восточного экономического форума и образовательной инициативы «Women-leader BRICS+». Наш проект высоко оценили эксперты из России, Китая и других стран. Мы уверены, что подготовка молодых технологических предпринимателей — это вклад в будущее нашей страны.</p>
+            <div class="conference-actions">
+                <a href="https://forms.yandex.ru/u/69b05bdf068ff01506dbcd8b/" class="btn btn-primary">Поддержите нас — станьте резидентом</a>
+                <span class="support-text">Мы надеемся на вашу поддержку!</span>
+            </div>
+        </div>
+        <div class="conference-logo">
+            <img src="СвИ_лого_гор_син_без обводки 1.svg" alt="Логотип партнёра" class="partner-logo-img">
+        </div>
+    </div>
+</section>
     <!-- CTA -->
     <section class="cta" id="register">
         <div class="container">
