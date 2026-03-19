@@ -1048,6 +1048,77 @@
             © 2026 FET Incubator. Все права защищены.
         </div>
     </footer>
+    <script>
+    (function() {
+        const track = document.querySelector('.carousel-track');
+        const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        const navContainer = document.querySelector('.carousel-nav');
+
+        if (!track || !slides.length) return; // если галереи нет, не выполняем
+
+        let currentIndex = 0;
+
+        // Создаём индикаторы (точки)
+        slides.forEach((_, i) => {
+            const btn = document.createElement('button');
+            btn.classList.add('carousel-indicator');
+            if (i === 0) btn.classList.add('current-slide');
+            btn.addEventListener('click', () => goToSlide(i));
+            navContainer.appendChild(btn);
+        });
+
+        const indicators = Array.from(document.querySelectorAll('.carousel-indicator'));
+
+        // Функция обновления отображения слайда
+        function updateSlide(index) {
+            if (index < 0) index = slides.length - 1;
+            if (index >= slides.length) index = 0;
+            currentIndex = index;
+
+            // Сдвигаем трек
+            const shift = currentIndex * 100;
+            track.style.transform = `translateX(-${shift}%)`;
+
+            // Обновляем классы у точек
+            indicators.forEach((dot, i) => {
+                if (i === currentIndex) {
+                    dot.classList.add('current-slide');
+                } else {
+                    dot.classList.remove('current-slide');
+                }
+            });
+        }
+
+        function goToSlide(index) {
+            updateSlide(index);
+        }
+
+        function nextSlide() {
+            updateSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            updateSlide(currentIndex - 1);
+        }
+
+        // Обработчики кнопок
+        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+        // Клавиатура (по желанию)
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                prevSlide();
+                e.preventDefault();
+            } else if (e.key === 'ArrowRight') {
+                nextSlide();
+                e.preventDefault();
+            }
+        });
+    })();
+</script>
 </body>
 
 </html>
