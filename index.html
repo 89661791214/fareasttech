@@ -612,6 +612,135 @@
         justify-content: center;
     }
 }
+        /* === Галерея / Карусель === */
+.gallery {
+    padding: 5rem 0;
+    background-color: var(--white);
+}
+
+.carousel {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-track-container {
+    overflow: hidden;
+    width: 100%;
+    border-radius: 1rem;
+    box-shadow: 0 20px 30px -10px rgba(0,0,0,0.15);
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.4s ease-in-out;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.carousel-slide {
+    flex: 0 0 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    display: block;
+}
+
+.slide-caption {
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    background-color: #fff;
+    width: 100%;
+}
+
+.carousel-btn {
+    background-color: var(--primary);
+    border: none;
+    color: white;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.2s;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    font-size: 1.5rem;
+}
+
+.carousel-btn:hover {
+    background-color: var(--primary-light);
+    transform: translateY(-50%) scale(1.05);
+}
+
+.carousel-btn.prev {
+    left: -24px;
+}
+
+.carousel-btn.next {
+    right: -24px;
+}
+
+.carousel-nav {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+}
+
+.carousel-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--border);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    padding: 0;
+}
+
+.carousel-indicator.current-slide {
+    background-color: var(--accent);
+}
+
+/* Адаптивность для стрелок */
+@media (max-width: 768px) {
+    .carousel-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+    .carousel-btn.prev {
+        left: 5px;
+    }
+    .carousel-btn.next {
+        right: 5px;
+    }
+    .carousel-nav {
+        bottom: -30px;
+    }
+}
     </style>
 </head>
 <body>
